@@ -1,0 +1,16 @@
+<div id="index" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h2>
+		<h:outputText value="#{msg['welcome.titre']}" />
+		<br />
+
+		<h:outputText value="Test pour voir si ça marche ou pas !!!!"
+			rendered="#{request.isUserInRole('ROLE_ADMIN')}" />
+	</h2>
+	<br />
+
+</div>
+

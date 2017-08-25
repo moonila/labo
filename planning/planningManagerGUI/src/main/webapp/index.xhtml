@@ -1,0 +1,24 @@
+<ui:composition template="/pages/layout/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="contentPage">
+		<h2>
+			<h:outputText value="#{msg['welcome.titre']}" />
+			<br />
+			<h:outputText value="#{msg['right.test']}"
+				rendered="#{request.isUserInRole('ROLE_ADMIN')}" />
+		</h2>
+		<br />
+		<div id="calendarToolBar">
+			<input type="button" onclick="Calendar.getCalendarByDay();"
+				value="modifier le jour" /> <input type="button"
+				onclick="Calendar.getCalendarByMonth();" value="modifier le mois" />
+		</div>
+		<div id="calendarLayout">
+			
+		</div>
+	</ui:define>
+</ui:composition>
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ol4jsf-proxy>
+	<use-environment id="test" />
+	<environment id="desenv">
+		<description>Development Environment.</description>
+		<resources>
+			<resource name="wfs">
+				<url>http://demo.opengeo.org/geoserver/wfs</url>
+			</resource>
+			<resource name="wms">
+				<url>http://demo.opengeo.org/geoserver/wms</url>
+			</resource>
+		</resources>
+	</environment>
+	<environment id="test">
+		<description>Test Environment.</description>
+		<resources>
+			<resource name="wfs">
+				<url>http://localhost:8080/geoserver/wfs</url>
+			</resource>
+			<resource name="wms">
+				<url>http://localhost:8080/geoserver/wms</url>
+			</resource>
+		</resources>
+	</environment>
+        
+</ol4jsf-proxy>

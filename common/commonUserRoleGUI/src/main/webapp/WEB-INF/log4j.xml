@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+	<!-- Specific log4j configuration file, for testing purposes -->
+<log4j:configuration>
+	<!-- console appender - verbose ON -->
+	<appender name="stdoutVerbose" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ABSOLUTE} %5p %C:%L - %m%n" />
+		</layout>
+	</appender>
+	<!-- console appender - verbose OFF -->
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%5p ] %m%n" />
+		</layout>
+	</appender>
+	
+   
+    <!--
+     	######################## 
+    	Configuration for hibernate logs
+    	######################## 
+     -->  
+    <logger name="org.hibernate" additivity="false">
+        <level value="info" />
+        <appender-ref ref="stdoutVerbose" />
+    </logger>
+     	   
+    <!--
+     	######################## 
+    	Configuration for spring logs
+    	######################## 
+     -->
+    <logger name="org.springframework" additivity="false">
+        <level value="info" />
+        <appender-ref ref="stdoutVerbose" />
+    </logger>
+    
+    <!--
+     	######################## 
+    	Configuration for jsf
+    	######################## 
+     -->
+    <logger name="com.sun.faces" additivity="false">
+        <level value="debug" />
+        <appender-ref ref="stdoutVerbose" />
+    </logger>
+        
+      
+	<root>
+		<priority value="info" />
+		<appender-ref ref="stdoutVerbose" />
+	</root>
+
+</log4j:configuration>

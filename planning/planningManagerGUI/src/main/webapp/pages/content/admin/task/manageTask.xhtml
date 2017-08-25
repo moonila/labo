@@ -1,0 +1,16 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<ui:composition template="../adminLayout.xhtml">
+		<ui:define name="adminContentPage">
+
+			<div class="pageTitle">
+				<h2>#{msg['task.page.title']}</h2>
+			</div>
+
+			<h:outputText value="#{msg_common['work.in.progress']}" />
+		</ui:define>
+	</ui:composition>
+</div>

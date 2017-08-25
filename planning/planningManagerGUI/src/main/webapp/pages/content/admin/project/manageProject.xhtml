@@ -1,0 +1,41 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<ui:composition template="../adminLayout.xhtml">
+		<ui:define name="adminContentPage">
+
+			<div class="pageTitle">
+				<h2>#{msg['project.page.title']}</h2>
+			</div>
+			<div class="listTable">
+
+				<div class="toolbar">
+					<h:commandButton value="#{msg['project.button.add.single']}"
+						onclick="viewPopUp('popupAddProject','disabledbackground'); return false;" >
+				<h:commandButton value="#{msg['project.button.remove.list']}"
+						action="#{projectGUI.removeProjects()}" />
+				</div>
+			</div>
+			<div class="tableRenderCSS">
+			<h:dataTable value="#{projectGUI.allProjects}"
+					var="project" >
+					<h:column id="order-table-delete-cell" >
+						<f:facet name="header">Supprimer</f:facet>		
+							<h:selectBooleanCheckbox   value="#{project.selected}" />			
+					</h:column>
+					<h:column >
+						<f:facet name="header">nom</f:facet>
+					#{project.name}</h:column>
+					<h:column >
+						<f:facet name="header">id</f:facet>#{project.id}</h:column>
+				</h:dataTable>
+				</div>
+
+<!-- 			<h:outputText value="#{msg_common['work.in.progress']}" /> -->
+
+		</ui:define>
+	</ui:composition>
+
+</div>

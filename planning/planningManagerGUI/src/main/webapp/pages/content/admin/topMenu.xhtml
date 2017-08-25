@@ -1,0 +1,25 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ul class="drop-nav">
+		<li><h:button value="#{msg['project.page.title']}"
+				outcome="/pages/content/admin/project/manageProject.xhtml?faces-redirect=true" /></li>
+		<li><h:button value="#{msg['task.page.title']}"
+				outcome="/pages/content/admin/task/manageTask.xhtml?faces-redirect=true" /></li>
+		 <li><a href="#">#{msg['access.page.title']}</a>
+		<ul>
+			<li><h:button value="#{msg_userrole['user.page.title']}"
+				outcome="/pages/userAndRole/userAdmin.xhtml?faces-redirect=true"
+				 /></li>
+			<li><h:button value="#{msg_userrole['role.page.title']}"
+				outcome="/pages/userAndRole/roleAdmin.xhtml?faces-redirect=true"
+				 /></li>
+				 <li><h:button value="#{msg_userrole['roleGroup.page.title']}"
+				outcome="/pages/userAndRole/roleGroupAdmin.xhtml?faces-redirect=true"
+				 /></li>
+		</ul>		
+				
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,61 @@
+
+<div id="header" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<div>
+		<table class="tableHeader">
+			<TR>
+				<TD><a
+					href="#{request.contextPath}/index.xhtml?faces-redirect=true">
+				 <h:graphicImage styleClass="logo"
+						value="#{resource['images:logo.png']}" alt="#{msg['planning']}" title="#{msg['planning']}"/></a></TD>
+				<TD>
+					<h1>
+						<h:outputText value="#{msg['app.title']}" />
+					</h1>
+				</TD>
+				<TD><a
+					href="#{request.contextPath}/pages/content/admin/adminLayout.xhtml?faces-redirect=true"><h:graphicImage
+							value="#{resource['images:EngrenagBleuSimple32.png']}"
+							alt="#{msg['configuration']}" title="#{msg['configuration']}" /></a></TD>
+				<TD><a href="#{request.contextPath}/pages/userAndRole/userProfile.xhtml?faces-redirect=true"><h:graphicImage
+							value="#{resource['images:profilBleu32.png']}" 
+							alt="#{msg['profil']}" title="#{msg['profil']}"/></a></TD>
+				<TD><a href="#{request.contextPath}/j_spring_security_logout"><h:graphicImage
+							value="#{resource['images:logoutBleu32.png']}"
+							alt="#{msg['logout']}" title="#{msg['logout']}" /></a></TD>
+			</TR>
+			<TR>
+				<TD />
+				<TD />
+				<TD />
+				<TD />
+				<TD class="language"><h:commandLink
+						action="#{changeLocale.setFrenchLocale}">
+						<h:graphicImage value="/resources/images/fr.gif" />
+					</h:commandLink> <h:outputText value="&#160;" /> <h:commandLink
+						action="#{changeLocale.setEnglishLocale}">
+						<h:graphicImage value="/resources/images/gb.gif" />
+					</h:commandLink></TD>
+			</TR>
+		</table>
+	</div>
+	<!-- 	<div id="menu-right" class="menu-right"> -->
+	<!-- 		<h:outputText value="#{msg['welcome.user']}" /> -->
+	<!-- 		<h:outputText value="&#160;" /> -->
+	<!-- 		<h:outputText value="#{loginBean.userName}" /> -->
+	<!-- 		<h:outputText value="&#160;" /> -->
+	<!-- 		<a href="#{request.contextPath}/j_spring_security_logout"><h:outputText -->
+	<!-- 				value="#{msg['logout']}" /></a> <br /> -->
+	<!-- 		<h:commandLink action="#{changeLocale.setFrenchLocale}"> -->
+	<!-- 			<h:graphicImage value="/resources/images/fr.gif" /> -->
+	<!-- 		</h:commandLink> -->
+	<!-- 		<h:outputText value="&#160;" /> -->
+	<!-- 		<h:commandLink action="#{changeLocale.setEnglishLocale}"> -->
+	<!-- 			<h:graphicImage value="/resources/images/gb.gif" /> -->
+	<!-- 		</h:commandLink> -->
+	<!-- 	</div> -->
+</div>
+

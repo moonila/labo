@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.moonila.common</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<groupId>org.moonila.common.dao</groupId>
+	<artifactId>genericDao</artifactId>
+	<packaging>jar</packaging>
+	<name>genericDao</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.trg</groupId>
+			<artifactId>trg-dao-hibernate</artifactId>
+			<version>0.5.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.trg</groupId>
+					<artifactId>trg-search</artifactId>
+				</exclusion>
+				<exclusion>
+					 <groupId>org.hibernate</groupId>
+    				 <artifactId>hibernate-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.trg</groupId>
+			<artifactId>trg-search</artifactId>
+			<version>0.4.3</version>
+			<exclusions>
+				<exclusion>
+					 <groupId>org.hibernate</groupId>
+    				 <artifactId>hibernate-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.3.174</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+</project>

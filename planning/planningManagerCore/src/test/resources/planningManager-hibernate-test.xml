@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Petals View - Functional Supervision. Copyright (c) 2010 EBM Websourcing, 
+	http://www.ebmwebsourcing.com/ This library is free software; you can redistribute 
+	it and/or modify it under the terms of the GNU Lesser General Public License 
+	as published by the Free Software Foundation; either version 2.1 of the License, 
+	or (at your option) any later version. This library is distributed in the 
+	hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+	warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+	GNU Lesser General Public License for more details. You should have received 
+	a copy of the GNU Lesser General Public License along with this library; 
+	if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 
+	330, Boston, MA 02111-1307 USA Initial developer(s): EBM WebSourcing -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.h2.Driver" />
+		<property name="url" value="jdbc:h2:mem:planningManagerTest" />
+		<property name="username" value="cvManager" />
+		<property name="password" value="cvManager" />
+		<property name="initialSize" value="2" />
+		<property name="maxActive" value="5" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan">
+			<list>
+				<value>org.moonila.planning.manager.dao.bo.**</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<!-- <prop key="hibernate.current_session_context_class"></prop> -->
+			</props>
+		</property>
+	</bean>
+	<tx:annotation-driven transaction-manager="txManager"/>
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	
+	
+
+</beans>

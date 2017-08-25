@@ -1,0 +1,89 @@
+.tableRenderCSS {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+}
+
+.tableRenderCSS table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+.tableRenderCSS tr th {
+	background-color: #cccccc;
+	font-weight: normal;
+	padding: 7px;
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+.tableRenderCSS tr:last-child td:last-child {
+	
+}
+
+.tableRenderCSS table tr:first-child td:first-child {
+	width: 5%;
+}
+
+.tableRenderCSS table tr:first-child td:last-child {
+	
+}
+
+.tableRenderCSS tr:last-child td:first-child {
+	
+}
+
+.tableRenderCSS tr:hover td {
+	
+}
+
+.tableRenderCSS tr:nth-child(odd) {
+	background-color: inherit;
+}
+
+.tableRenderCSS tr:nth-child(even) {
+	background-color: #e5e5e5;
+}
+
+.tableRenderCSS td {
+	vertical-align: middle;
+	text-align: center;
+	padding: 7px;
+	font-size: 10px;
+	font-family: Arial;
+	font-weight: normal;
+	color: #000000;
+}
+
+.tableRenderCSS tr:last-child td {
+	
+}
+
+.tableRenderCSS tr td:last-child {
+	
+}
+
+.tableRenderCSS tr:last-child td:last-child {
+	
+}
+
+.tableRenderCSS tr:first-child td {
+	
+}
+
+.tableRenderCSS tr:first-child:hover td {
+	
+}
+
+.tableRenderCSS tr:first-child td:first-child {
+	
+}
+
+.tableRenderCSS tr:first-child td:last-child {
+	
+}

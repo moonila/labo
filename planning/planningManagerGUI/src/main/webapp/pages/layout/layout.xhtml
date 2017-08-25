@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{changeLocale.locale}">
+	<h:head>
+		<title>Planning Manager</title>
+		<h:outputStylesheet library="css" name="planningmanager.css" />
+		<h:outputStylesheet library="css" name="table.css" />
+		<h:outputStylesheet library="css" name="dropdownmenu.css" />
+		<h:outputScript library="js" name="customjs.js" /> 
+<!-- 		<h:outputScript library="js" name="foundation.min.js" /> -->
+		<h:outputScript library="js" name="calendar.js" />
+		<h:outputScript library="js" name="jquery-2.1.1.js" />	
+	</h:head>
+
+	<h:body>
+		<h:form id="formulaire">
+			<div class="container">
+				<ui:include src="/pages/common/topBar.xhtml" />
+				<div class="row">
+					<div id="content" class="contentPage">
+						<ui:insert name="contentPage">
+							<ui:include src="../../index.xhtml" />
+						</ui:insert>
+					</div>
+				</div>
+				<div id="footer">
+					<ui:include src="/pages/common/footer.xhtml" />
+				</div>
+			</div>
+		</h:form>
+	</h:body>
+</f:view>
+</html>

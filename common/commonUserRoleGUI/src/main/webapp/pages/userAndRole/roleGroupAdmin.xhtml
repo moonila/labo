@@ -1,0 +1,25 @@
+<ui:composition template="userRoleLayout.xhtml" 
+ xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="adminContentPage">
+		
+			<div class="pageTitle">
+				<h2>#{msg_userrole['roleGroup.page.title']}</h2>
+			</div>
+			<div class="listTable">
+
+				<div class="toolbar">
+					<h:commandButton value="#{msg_userrole['roleGroup.button.add.single']}"
+						onclick="viewPopUp('popupAddRole','disabledbackground'); return false;"></h:commandButton>
+					<h:commandButton value="#{msg_userrole['roleGroup.button.remove.single']}"
+						onclick="viewPopUp('popupRemoveRole','disabledbackground'); return false;"></h:commandButton>
+				</div>
+			</div>
+			<h:outputText value="#{msg_common['work.in.progress']}" />
+	</ui:define>
+
+</ui:composition>
+

@@ -1,0 +1,45 @@
+<ui:composition template="userRoleLayout.xhtml" 
+ xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="adminContentPage">
+		
+			<div class="pageTitle">
+				<h2>#{msg_userrole['user.page.title']}</h2>
+			</div>
+			<div class="listTable">
+
+				<div class="toolbar">
+					<h:commandButton value="#{msg_userrole['user.button.add.single']}"
+						onclick="viewPopUp('popupAddRole','disabledbackground'); return false;"></h:commandButton>
+				<h:commandButton value="#{msg_userrole['user.button.remove.list']}"
+						action="#{userGUI.removeUsers()}" />
+				</div>
+			</div>
+			<div id="disabledbackground"></div>
+			<ui:include src="popupCreateUser.xhtml" />
+<!-- 			<ui:include src="popupRemoveUser.xhtml" /> -->
+			<div>
+			je regarde qui prend ma modification
+			<div class="tableRenderCSS">
+				<h:dataTable  value="#{userGUI.allUserList}"
+					var="user" columnClasses="tdDeleteImage,tdWord">
+					<h:column id="order-table-delete-cell" class="delete-cell">
+						<f:facet name="header">Supprimer</f:facet>
+						<div class="checkBoxBoolean">
+							<h:selectBooleanCheckbox value="#{user.selected}" />
+						</div>
+					</h:column>
+					<h:column class="rf-pp-tbl">#{user.name}</h:column>
+					<h:column class="rf-pp-tbl">#{user.id}</h:column>
+					<h:column class="rf-pp-tbl">#{user.login}</h:column>
+					<h:column class="rf-pp-tbl">#{user.password}</h:column>
+				</h:dataTable>
+				</div>
+			</div>
+	</ui:define>
+
+</ui:composition>
+

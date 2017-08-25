@@ -1,0 +1,38 @@
+<div id="popupAddRole" class="overlay"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<div>
+		<h:outputText value="Nom :" />
+		<h:inputText value="#{userGUI.newUserName}" required="true"
+			requiredMessage="ceci est obligatoire" />
+	</div>
+	
+	<div>
+		<h:outputText value="Login :" />
+		<h:inputText value="#{userGUI.newUserLogin}" required="true"
+			requiredMessage="ceci est obligatoire" />
+	</div>
+
+	<div>
+		<h:outputText value=" Password :" />
+		<h:inputSecret value="#{userGUI.newUserPassword}"></h:inputSecret>
+	</div>
+
+<!-- 	<div class="comboBox"> -->
+<!-- 		<h:outputText value="Role : " /> -->
+
+<!-- 		<h:selectOneListbox value="#{userGUI.roleId}"> -->
+<!-- 			<f:selectItems value="#{userGUI.allRoleList}" var="role" -->
+<!-- 				itemValue="#{role.id}" itemLabel="#{role.name}" /> -->
+<!-- 		</h:selectOneListbox> -->
+<!-- 	</div> -->
+
+	<h:commandButton value="#{msg_common['button.validate']}"
+		action="#{userGUI.createOrUpdateUser()}" onclick="hidePopUp('popupAddRole');" />
+	<h:commandButton value="#{msg_common['button.cancel']}"
+		onclick="hidePopUp('popupAddRole');" />
+</div>
