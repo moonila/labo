@@ -81,7 +81,6 @@ public class GenericHibernateDAOImpl<T, PK extends Serializable> implements
 		return crit.list();
 	}
 
-	@Override
 	public List<T> getAll() {
 		return getAllByCriteria(this.type, new Criterion[0]);
 	}

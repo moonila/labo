@@ -43,7 +43,6 @@ public class UserDAOImpl extends GenericHibernateDAOImpl<BaseUserBO, String>
 		return getByPropertyUnique("login", login);
 	}
 
-	@Override
 	public void setType() {
 		super.setType(BaseUserBO.class);
 
