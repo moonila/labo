@@ -11,7 +11,7 @@ import org.moonila.common.dao.persistence.GenericInterfaceDao;
 import org.moonila.common.user.dao.bo.BaseRoleGroupBO;
 
 /**
- * @author strino - eBM WebSourcing
+ * @author strino 
  * 
  */
 

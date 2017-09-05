@@ -1,6 +1,5 @@
 /**
- * Web commons : user service.
- * Copyright (c) 2010 EBM Websourcing, http://www.ebmwebsourcing.com/
+ * License
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -27,7 +26,7 @@ package org.moonila.common.user.core.service;
  * Method arguments must be non null, unless the
  * contrary is explicitly specified.
  * 
- * @author strino - eBM WebSourcing
+ * @author Sandra Trino
  * 
  */
 

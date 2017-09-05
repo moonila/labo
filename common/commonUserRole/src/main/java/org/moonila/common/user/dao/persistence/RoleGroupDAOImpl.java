@@ -1,6 +1,5 @@
 /**
- * Web commons : user service.
- * Copyright (c) 2010 EBM Websourcing, http://www.ebmwebsourcing.com/
+ * License
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -27,7 +26,7 @@ import org.moonila.common.user.dao.bo.BaseRoleGroupBO;
 import org.springframework.stereotype.Repository;
 
 /**
- * @author strino - eBM WebSourcing
+ * @author strino
  * 
  */
 @Repository("roleGroupDao")
