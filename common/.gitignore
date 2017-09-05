@@ -1,0 +1,11 @@
+/target
+/.settings
+.project
+/common*/.classpath
+/common*/target
+/common*/.settings
+/common*/.project
+/generic*/.classpath
+/generic*/target
+/generic*/.settings
+/generic*/.project

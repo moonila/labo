@@ -1,0 +1,7 @@
+/target
+/.settings
+.project
+/planning*/.classpath
+/planning*/target
+/planning*/.settings
+/planning*/.project
