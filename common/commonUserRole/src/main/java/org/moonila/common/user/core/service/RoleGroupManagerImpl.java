@@ -29,6 +29,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.StringTokenizer;
 
+import org.apache.commons.lang.StringUtils;
 import org.moonila.common.crud.CrudException;
 import org.moonila.common.user.core.to.BaseRoleGroupTO;
 import org.moonila.common.user.core.utils.RoleGroupException;
@@ -37,7 +38,6 @@ import org.moonila.common.user.core.utils.UserRoleDaoFactory;
 import org.moonila.common.user.dao.bo.BaseRoleBO;
 import org.moonila.common.user.dao.bo.BaseRoleGroupBO;
 import org.moonila.common.user.dao.bo.BaseUserBO;
-import org.moonila.common.utils.StringHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
@@ -264,7 +264,7 @@ public class RoleGroupManagerImpl extends UserRoleDaoFactory implements RoleGrou
     		 throw new CrudException("A role must be speficied.");
     	}
         String roleGroupNameTO = roleGroup.getName();
-        if (StringHelper.isNullOrEmpty(roleGroupNameTO)) {
+        if (StringUtils.isEmpty(roleGroupNameTO)) {
             throw new CrudException("Role Name must be speficied.");
         }
             BaseRoleGroupBO group = getRoleGroupDao().getRoleGroupByName(roleGroupNameTO);

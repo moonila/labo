@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.StringTokenizer;
 
+import org.apache.commons.lang.StringUtils;
 import org.moonila.common.crud.CrudException;
 import org.moonila.common.user.core.to.BaseUserTO;
 import org.moonila.common.user.core.utils.RoleGroupException;
@@ -36,7 +37,6 @@ import org.moonila.common.user.core.utils.UserException;
 import org.moonila.common.user.core.utils.UserRoleDaoFactory;
 import org.moonila.common.user.dao.bo.BaseRoleGroupBO;
 import org.moonila.common.user.dao.bo.BaseUserBO;
-import org.moonila.common.utils.StringHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
@@ -275,8 +275,8 @@ public class UserManagerImpl extends UserRoleDaoFactory implements UserManager {
 	private void validateUserBeforSaveOrUpdate(BaseUserTO userTO)
 			throws CrudException {
 		String nameUserTO = userTO.getName();
-		if (StringHelper.isNullOrEmpty(nameUserTO)
-				|| StringHelper.isNullOrEmpty(userTO.getPassword())) {
+		if (StringUtils.isEmpty(nameUserTO)
+				|| StringUtils.isEmpty(userTO.getPassword())) {
 			throw new CrudException(
 					"BaseUserBO Name and its password must be speficied.");
 		}

@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import org.apache.commons.lang.StringUtils;
 import org.moonila.common.crud.CrudException;
 import org.moonila.common.user.core.to.BaseRoleTO;
 import org.moonila.common.user.core.utils.RoleGroupException;
 import org.moonila.common.user.core.utils.RolesAndUsersTransfertObjectImpl;
 import org.moonila.common.user.core.utils.UserRoleDaoFactory;
 import org.moonila.common.user.dao.bo.BaseRoleBO;
-import org.moonila.common.utils.StringHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
@@ -80,7 +80,7 @@ public class RoleManagerImpl extends UserRoleDaoFactory implements RoleManager {
 	}
 
 	public void deleteSingleObject(String id) throws CrudException {
-		if (StringHelper.isNullOrEmpty(id)) {
+		if (StringUtils.isEmpty(id)) {
 			throw new CrudException("Role id must be specified");
 		}
 		BaseRoleBO role = getRoleDao().get(id);
@@ -108,7 +108,7 @@ public class RoleManagerImpl extends UserRoleDaoFactory implements RoleManager {
 	}
 
 	public BaseRoleTO getObject(String id) throws CrudException {
-		if (StringHelper.isNullOrEmpty(id)) {
+		if (StringUtils.isEmpty(id)) {
 			throw new CrudException("Role id must be specified");
 		}
 		BaseRoleBO role = getRoleDao().get(id);
@@ -126,7 +126,7 @@ public class RoleManagerImpl extends UserRoleDaoFactory implements RoleManager {
 	private void validateRoleBeforSaveOrUpdate(BaseRoleTO roleTO)
 			throws CrudException {
 		String nameRoleTO = roleTO.getName();
-		if (StringHelper.isNullOrEmpty(nameRoleTO)) {
+		if (StringUtils.isEmpty(nameRoleTO)) {
 			throw new CrudException("BaseRoleBO Name must be speficied.");
 		}
 		BaseRoleBO role = getRoleDao().getRoleByName(nameRoleTO);
