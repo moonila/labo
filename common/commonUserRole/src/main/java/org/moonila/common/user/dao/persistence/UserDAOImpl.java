@@ -21,31 +21,27 @@
 
 package org.moonila.common.user.dao.persistence;
 
-import org.moonila.common.dao.persistence.GenericHibernateDAOImpl;
-import org.moonila.common.user.dao.bo.BaseUserBO;
-import org.springframework.stereotype.Repository;
-
 /**
  * @author strino
  * 
  */
-@Repository("userDao")
-public class UserDAOImpl extends GenericHibernateDAOImpl<BaseUserBO, String>
-		implements UserDAO {
+//@Repository("userDao")
+public class UserDAOImpl {
+//		extends GenericHibernateDAOImpl<BaseUserBO, String> implements UserDAO {
 
-	public UserDAOImpl() {
-		super();
-		setType();
-	}
-
-	// retrieve user by its login
-	public BaseUserBO getUserByLogin(String login) {
-		return getByPropertyUnique("login", login);
-	}
-
-	public void setType() {
-		super.setType(BaseUserBO.class);
-
-	}
+//	public UserDAOImpl() {
+//		super();
+//		setType();
+//	}
+//
+//	// retrieve user by its login
+//	public BaseUserBO getUserByLogin(String login) {
+//		return getByPropertyUnique("login", login);
+//	}
+//
+//	public void setType() {
+//		super.setType(BaseUserBO.class);
+//
+//	}
 
 }

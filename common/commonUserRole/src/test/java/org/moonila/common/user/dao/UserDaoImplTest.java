@@ -1,23 +1,19 @@
 package org.moonila.common.user.dao;
 
-import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.moonila.common.ApplicationTest;
 import org.moonila.common.user.dao.bo.BaseUserBO;
-import org.moonila.common.user.dao.persistence.UserDAO;
-import org.moonila.common.user.utils.GenericUnitCase;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 
-@Transactional
-public class UserDaoImplTest extends GenericUnitCase {
+import java.util.List;
 
-	@Autowired
-	@Qualifier("userDao")
-	private UserDAO userDao;
+import static org.junit.Assert.assertEquals;
+
+@Transactional
+public class UserDaoImplTest extends ApplicationTest {
+
 
 	@Before
 	public void init() throws Exception {
@@ -30,8 +26,8 @@ public class UserDaoImplTest extends GenericUnitCase {
 		user2.setPassword("toto");
 		user2.setName("titi");
 
-		userDao.saveOrUpdate(user1);
-		userDao.saveOrUpdate(user2);
+		getUserDao().save(user1);
+		getUserDao().save(user2);
 	}
 
 	@After
@@ -41,9 +37,9 @@ public class UserDaoImplTest extends GenericUnitCase {
 	
 	@Test
 	public void testGetALLKeyWords() {
-		BaseUserBO toto =  userDao.getUserByLogin("toto");
+		BaseUserBO toto =  getUserDao().getUserByLogin("toto");
 		System.out.println("je regarde si toto à quelque chose " +toto.getLogin());
-		List<BaseUserBO> getAllUsers = userDao.getAll();
+		List<BaseUserBO> getAllUsers = getUserDao().findAll();
 		assertEquals(getAllUsers.size(), 2);
 	}
 

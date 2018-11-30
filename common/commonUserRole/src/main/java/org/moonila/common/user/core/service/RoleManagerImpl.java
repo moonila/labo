@@ -3,6 +3,7 @@ package org.moonila.common.user.core.service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
@@ -68,7 +69,7 @@ public class RoleManagerImpl extends UserRoleDaoFactory implements RoleManager {
 		BaseRoleBO role = RolesAndUsersTransfertObjectImpl
 				.toRoleBO(objectToBeInserted);
 
-		return getRoleDao().saveOrUpdate(role).getId();
+		return getRoleDao().save(role).getId();
 	}
 
 	public List<BaseRoleTO> deleteObjectsByIds(List<String> idsList)
@@ -83,13 +84,13 @@ public class RoleManagerImpl extends UserRoleDaoFactory implements RoleManager {
 		if (StringUtils.isEmpty(id)) {
 			throw new CrudException("Role id must be specified");
 		}
-		BaseRoleBO role = getRoleDao().get(id);
+		Optional<BaseRoleBO> role = getRoleDao().findById(id);
 		if (role == null) {
 			throw new CrudException("Can not find and remove role in database ");
 		}
 
 		// remove role by its id
-		getRoleDao().remove(role);
+		getRoleDao().delete(role.get());
 
 	}
 
@@ -98,7 +99,7 @@ public class RoleManagerImpl extends UserRoleDaoFactory implements RoleManager {
 		List<BaseRoleTO> listRoleTO = new ArrayList<BaseRoleTO>();
 
 		// retrieve all roles
-		List<BaseRoleBO> listRole = getRoleDao().getAll();
+		List<BaseRoleBO> listRole = getRoleDao().findAll();
 
 		for (BaseRoleBO role : listRole) {
 			BaseRoleTO roleTO = RolesAndUsersTransfertObjectImpl.toRoleTO(role);
@@ -111,12 +112,12 @@ public class RoleManagerImpl extends UserRoleDaoFactory implements RoleManager {
 		if (StringUtils.isEmpty(id)) {
 			throw new CrudException("Role id must be specified");
 		}
-		BaseRoleBO role = getRoleDao().get(id);
+		Optional<BaseRoleBO> role = getRoleDao().findById(id);
 		BaseRoleTO roleTO;
 		
 		if(role !=null){
 			//transform BaseRoleBO to BaseRoleTO
-			roleTO = RolesAndUsersTransfertObjectImpl.toRoleTO(role);
+			roleTO = RolesAndUsersTransfertObjectImpl.toRoleTO(role.get());
 		}else {
 			throw new CrudException("Can not find role in database ");
 		}

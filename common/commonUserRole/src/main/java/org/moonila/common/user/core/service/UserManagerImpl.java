@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Properties;
 import java.util.StringTokenizer;
 
@@ -107,7 +108,7 @@ public class UserManagerImpl extends UserRoleDaoFactory implements UserManager {
 		BaseUserBO user = new BaseUserBO();
 		RolesAndUsersTransfertObjectImpl.toUserBO(userTO, user);
 
-		return getUserDao().saveOrUpdate(user).getId();
+		return getUserDao().save(user).getId();
 
 	}
 
@@ -116,7 +117,7 @@ public class UserManagerImpl extends UserRoleDaoFactory implements UserManager {
 		List<BaseUserTO> listUserTO = new ArrayList<BaseUserTO>();
 
 		// retrieve all users
-		List<BaseUserBO> listUser = getUserDao().getAll();
+		List<BaseUserBO> listUser = getUserDao().findAll();
 
 		for (BaseUserBO us : listUser) {
 
@@ -135,19 +136,19 @@ public class UserManagerImpl extends UserRoleDaoFactory implements UserManager {
 		List<BaseUserTO> listUserTO = new ArrayList<BaseUserTO>();
 
 		// retrieve role group with its id
-		BaseRoleGroupBO roleGroup = getRoleGroupDao().get(idRoleGroup);
+		Optional<BaseRoleGroupBO> roleGroup = getRoleGroupDao().findById(idRoleGroup);
 
 		List<BaseUserBO> listUserInRole;
 
 		if (roleGroup != null) {
-			listUserInRole = roleGroup.getListUser();
+			listUserInRole = roleGroup.get().getListUser();
 		} else {
 			throw new UserException("A role with that name not exists ! ");
 
 		}
 
 		// retrieve all users
-		List<BaseUserBO> allUser = getUserDao().getAll();
+		List<BaseUserBO> allUser = getUserDao().findAll();
 
 		if (allUser != null) {
 			if (!listUserInRole.isEmpty()) {
@@ -169,13 +170,13 @@ public class UserManagerImpl extends UserRoleDaoFactory implements UserManager {
 	public BaseUserTO getObject(String userId) throws CrudException {
 
 		// retrieve user with its id
-		BaseUserBO user = getUserDao().get(userId);
+		Optional<BaseUserBO> user = getUserDao().findById(userId);
 
 		BaseUserTO userTO;
 
 		if (user != null) {
 			// transform BaseUserBO to BaseUserTO
-			userTO = RolesAndUsersTransfertObjectImpl.toUserTO(user);
+			userTO = RolesAndUsersTransfertObjectImpl.toUserTO(user.get());
 		} else {
 			throw new CrudException("Can not find user in database ");
 		}
@@ -209,19 +210,19 @@ public class UserManagerImpl extends UserRoleDaoFactory implements UserManager {
 	}
 
 	public void deleteSingleObject(String userId) throws CrudException {
-		BaseUserBO user = getUserDao().get(userId);
+		Optional<BaseUserBO> user = getUserDao().findById(userId);
 
 		if (user == null) {
 			throw new CrudException("Can not find and remove user in database ");
 		}
 		// remove user by its id
-		getUserDao().remove(user);
+		getUserDao().delete(user.get());
 	}
 
 	public void addRoleGroup(String idUser, String idRoleGroup)
 			throws UserException {
 		// retrieve user with its id
-		BaseUserBO user = getUserDao().get(idUser);
+		Optional<BaseUserBO> user = getUserDao().findById(idUser);
 
 		if (user == null) {
 			throw new UserException(
@@ -230,7 +231,7 @@ public class UserManagerImpl extends UserRoleDaoFactory implements UserManager {
 		}
 
 		// retrieve role group with its id
-		BaseRoleGroupBO roleGroup = getRoleGroupDao().get(idRoleGroup);
+		Optional<BaseRoleGroupBO> roleGroup = getRoleGroupDao().findById(idRoleGroup);
 
 		if (roleGroup == null) {
 			throw new UserException(
@@ -239,17 +240,17 @@ public class UserManagerImpl extends UserRoleDaoFactory implements UserManager {
 		}
 
 		// insert the new role group in the user's list<BaseRoleGroupBO>
-		user.addRoleGroup(roleGroup);
+		user.get().addRoleGroup(roleGroup.get());
 
 		// saveOrUpdate user
-		getUserDao().saveOrUpdate(user);
+		getUserDao().save(user.get());
 
 	}
 
 	public void removeRoleGroup(String idUser, String idRoleGroup)
 			throws UserException {
 		// retrieve user with its id
-		BaseUserBO user = getUserDao().get(idUser);
+		Optional<BaseUserBO> user = getUserDao().findById(idUser);
 		if (user == null) {
 			throw new UserException(
 					"You are trying to remove a role to a non existing user with id: "
@@ -257,7 +258,7 @@ public class UserManagerImpl extends UserRoleDaoFactory implements UserManager {
 		}
 
 		// retrieve role group with its id
-		BaseRoleGroupBO roleGroup = getRoleGroupDao().get(idRoleGroup);
+		Optional<BaseRoleGroupBO> roleGroup = getRoleGroupDao().findById(idRoleGroup);
 
 		if (roleGroup == null) {
 			throw new UserException(
@@ -266,10 +267,10 @@ public class UserManagerImpl extends UserRoleDaoFactory implements UserManager {
 		}
 
 		// insert the role group in the user's list<BaseRoleGroupBO>
-		user.removeRoleGroup(roleGroup);
+		user.get().removeRoleGroup(roleGroup.get());
 
 		// saveOrUpdate user
-		getUserDao().saveOrUpdate(user);
+		getUserDao().save(user.get());
 	}
 
 	private void validateUserBeforSaveOrUpdate(BaseUserTO userTO)
@@ -319,7 +320,7 @@ public class UserManagerImpl extends UserRoleDaoFactory implements UserManager {
 			user.setListRoleGroup(listRoleGroup);
 
 			// saveOrUpdate the user in database
-			getUserDao().saveOrUpdate(user);
+			getUserDao().save(user);
 		}
 	}
 

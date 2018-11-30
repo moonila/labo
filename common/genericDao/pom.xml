@@ -37,32 +37,32 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.trg</groupId>
-			<artifactId>trg-dao-hibernate</artifactId>
-			<version>0.5.1</version>
-			<exclusions>
-				<exclusion>
-					<groupId>com.trg</groupId>
-					<artifactId>trg-search</artifactId>
-				</exclusion>
-				<exclusion>
-					 <groupId>org.hibernate</groupId>
-    				 <artifactId>hibernate-core</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>com.trg</groupId>
-			<artifactId>trg-search</artifactId>
-			<version>0.4.3</version>
-			<exclusions>
-				<exclusion>
-					 <groupId>org.hibernate</groupId>
-    				 <artifactId>hibernate-core</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>com.trg</groupId>-->
+			<!--<artifactId>trg-dao-hibernate</artifactId>-->
+			<!--<version>0.5.1</version>-->
+			<!--<exclusions>-->
+				<!--<exclusion>-->
+					<!--<groupId>com.trg</groupId>-->
+					<!--<artifactId>trg-search</artifactId>-->
+				<!--</exclusion>-->
+				<!--<exclusion>-->
+					 <!--<groupId>org.hibernate</groupId>-->
+    				 <!--<artifactId>hibernate-core</artifactId>-->
+				<!--</exclusion>-->
+			<!--</exclusions>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>com.trg</groupId>-->
+			<!--<artifactId>trg-search</artifactId>-->
+			<!--<version>0.4.3</version>-->
+			<!--<exclusions>-->
+				<!--<exclusion>-->
+					 <!--<groupId>org.hibernate</groupId>-->
+    				 <!--<artifactId>hibernate-core</artifactId>-->
+				<!--</exclusion>-->
+			<!--</exclusions>-->
+		<!--</dependency>-->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>

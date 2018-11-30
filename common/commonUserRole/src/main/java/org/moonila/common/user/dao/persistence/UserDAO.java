@@ -21,14 +21,16 @@
 
 package org.moonila.common.user.dao.persistence;
 
-import org.moonila.common.dao.persistence.GenericInterfaceDao;
 import org.moonila.common.user.dao.bo.BaseUserBO;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author strino
  * 
  */
-public interface UserDAO extends GenericInterfaceDao<BaseUserBO, String> {
+@Repository
+public interface UserDAO extends JpaRepository<BaseUserBO, String> {
 
 	public BaseUserBO getUserByLogin(String login);
 

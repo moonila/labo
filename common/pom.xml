@@ -16,10 +16,14 @@
 		<spring.security.version>4.2.3.RELEASE</spring.security.version>
 		<hibernate.version>5.2.10.Final</hibernate.version>
 		<log4j.version>1.2.17</log4j.version>
+		<spring.boot.version>2.1.0.RELEASE</spring.boot.version>
+		<spring.framework.version>5.1.2.RELEASE</spring.framework.version>
+		<spring.framework.security.version>5.1.1.RELEASE</spring.framework.security.version>
+		<lombok.version>1.18.4</lombok.version>
 	</properties>
 
 	<modules>
-		<module>genericDao</module>
+		<!--<module>genericDao</module>-->
 		<module>commonUtils</module>
 		<module>commonUserRole</module>
 		<module>commonUserRoleGUI</module>
@@ -86,7 +90,32 @@
 	</dependencies>
 
 	<dependencyManagement>
+
 		<dependencies>
+			<dependency>
+				<groupId>org.modelmapper</groupId>
+				<artifactId>modelmapper</artifactId>
+				<version>${modelmapper.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>${javax.validation.version}</version>
+			</dependency>
+
+			<!-- Dépendances Spring -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring.framework.version}</version>
+				<scope>provided</scope>
+			</dependency>
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-core</artifactId>

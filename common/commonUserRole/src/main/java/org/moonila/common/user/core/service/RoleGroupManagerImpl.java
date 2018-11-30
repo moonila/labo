@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Properties;
 import java.util.StringTokenizer;
 
@@ -119,14 +120,14 @@ public class RoleGroupManagerImpl extends UserRoleDaoFactory implements RoleGrou
         roleGroup.setListRoles(listR);
 
         // create role group
-        return getRoleGroupDao().saveOrUpdate(roleGroup).getId();
+        return getRoleGroupDao().save(roleGroup).getId();
 
     }
 
     public List<BaseRoleGroupTO> getAllObject() {
 
         // retrieve all role group
-        List<BaseRoleGroupBO> listAllGroup = getRoleGroupDao().getAll();
+        List<BaseRoleGroupBO> listAllGroup = getRoleGroupDao().findAll();
 
         // transform role groups
         List<BaseRoleGroupTO> listRole = RolesAndUsersTransfertObjectImpl.toAllGroups(listAllGroup);
@@ -139,18 +140,18 @@ public class RoleGroupManagerImpl extends UserRoleDaoFactory implements RoleGrou
         List<BaseRoleGroupTO> listRoleGroupTO = new ArrayList<BaseRoleGroupTO>();
 
         // retrieve user with its id
-        BaseUserBO user = getUserDao().get(idUser);
+        Optional<BaseUserBO> user = getUserDao().findById(idUser);
 
         List<BaseRoleGroupBO> listRoleGroupInUser = new ArrayList<BaseRoleGroupBO>();
 
         if (user != null) {
-            listRoleGroupInUser = user.getListRoleGroup();
+            listRoleGroupInUser = user.get().getListRoleGroup();
         } else {
             throw new RoleGroupException("A user with that name doesn't exist ! ");
         }
 
         // retrieve all role groups
-        List<BaseRoleGroupBO> allRoleGroup = getRoleGroupDao().getAll();
+        List<BaseRoleGroupBO> allRoleGroup = getRoleGroupDao().findAll();
 
         if (allRoleGroup != null) {
 
@@ -175,14 +176,14 @@ public class RoleGroupManagerImpl extends UserRoleDaoFactory implements RoleGrou
     public BaseRoleGroupTO getObject(String id) throws CrudException {
     	
         // retrieve role group
-        BaseRoleGroupBO roleGroup = getRoleGroupDao().get(id);
+        Optional<BaseRoleGroupBO> roleGroup = getRoleGroupDao().findById(id);
 
         if (roleGroup == null) {
             throw new CrudException("no role groups whith this id in database ! ");
         }
 
         // transform role group
-        BaseRoleGroupTO role = RolesAndUsersTransfertObjectImpl.toRoleGroupTO(roleGroup);
+        BaseRoleGroupTO role = RolesAndUsersTransfertObjectImpl.toRoleGroupTO(roleGroup.get());
 
         return role;
     }
@@ -198,22 +199,22 @@ public class RoleGroupManagerImpl extends UserRoleDaoFactory implements RoleGrou
 
     public void deleteSingleObject( String id) throws CrudException {
         // retrieve role group by its id
-        BaseRoleGroupBO roleGroup = getRoleGroupDao().get(id);
+        Optional<BaseRoleGroupBO> roleGroup = getRoleGroupDao().findById(id);
 
         if (roleGroup == null) {
             throw new CrudException("no role groups whith this id in database ! ");
         }
         
-        roleGroup.clearUserList();
-        getRoleGroupDao().saveOrUpdate(roleGroup);
+        roleGroup.get().clearUserList();
+        getRoleGroupDao().save(roleGroup.get());
         
         // remove role group
-        getRoleGroupDao().remove(roleGroup);
+        getRoleGroupDao().delete(roleGroup.get());
     }
 
      public void removeUser(String idUser,String idRoleGroup) throws RoleGroupException {
         // retrieve roleGroup by its id
-        BaseRoleGroupBO roleGroup = getRoleGroupDao().get(idRoleGroup);
+         Optional<BaseRoleGroupBO >roleGroup = getRoleGroupDao().findById(idRoleGroup);
         if (roleGroup == null) {
             throw new RoleGroupException(
                     "You are trying to remove a user to a non existing role whit id : "
@@ -221,22 +222,22 @@ public class RoleGroupManagerImpl extends UserRoleDaoFactory implements RoleGrou
         }
 
         // retrieve user by its id
-        BaseUserBO user = getUserDao().get(idUser);
+         Optional<BaseUserBO> user = getUserDao().findById(idUser);
         if (user == null) {
             throw new RoleGroupException(
                     "You are trying to remove a non existing user to a role whith id : "
                             + idRoleGroup);
         }
 
-        roleGroup.removeUser(user);
+        roleGroup.get().removeUser(user.get());
 
-        getRoleGroupDao().saveOrUpdate(roleGroup);
+        getRoleGroupDao().save(roleGroup.get());
     }
 
     public void addUser(String idUser, String idRoleGroup) throws RoleGroupException {
 
         // retrieve role group with its id
-        BaseRoleGroupBO roleGroup = getRoleGroupDao().get(idRoleGroup);
+        Optional<BaseRoleGroupBO> roleGroup = getRoleGroupDao().findById(idRoleGroup);
 
         if (roleGroup == null) {
             throw new RoleGroupException(
@@ -244,17 +245,17 @@ public class RoleGroupManagerImpl extends UserRoleDaoFactory implements RoleGrou
         }
 
         // retrieve user with its id
-        BaseUserBO user = getUserDao().get(idUser);
+        Optional<BaseUserBO> user = getUserDao().findById(idUser);
 
         if (user == null) {
             throw new RoleGroupException(
                     "You are trying to add a non existing user to a role whith id : " + idRoleGroup);
         }
         // insert the new user in the RoleGroup list<User>
-        roleGroup.addUser(user);
+        roleGroup.get().addUser(user.get());
 
         // save role Group
-        getRoleGroupDao().saveOrUpdate(roleGroup);
+        getRoleGroupDao().save(roleGroup.get());
 
     }
 
@@ -267,7 +268,7 @@ public class RoleGroupManagerImpl extends UserRoleDaoFactory implements RoleGrou
         if (StringUtils.isEmpty(roleGroupNameTO)) {
             throw new CrudException("Role Name must be speficied.");
         }
-            BaseRoleGroupBO group = getRoleGroupDao().getRoleGroupByName(roleGroupNameTO);
+        BaseRoleGroupBO group = getRoleGroupDao().getRoleGroupByName(roleGroupNameTO);
             if (group != null) {
                 throw new CrudException("A role with that name already exists : "
                         + roleGroupNameTO);
@@ -287,7 +288,7 @@ public class RoleGroupManagerImpl extends UserRoleDaoFactory implements RoleGrou
             roleGroup.setListRoles(listRoles);
 
             // save the role group in database
-            getRoleGroupDao().saveOrUpdate(roleGroup);
+            getRoleGroupDao().save(roleGroup);
         }
     }
 

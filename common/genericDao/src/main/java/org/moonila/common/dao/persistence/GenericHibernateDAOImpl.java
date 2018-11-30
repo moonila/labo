@@ -21,11 +21,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 
-import com.trg.search.Filter;
-import com.trg.search.IMutableSearch;
-import com.trg.search.Search;
-import com.trg.search.SearchResult;
-import com.trg.search.hibernate.HibernateSearchProcessor;
+//import com.trg.search.Filter;
+//import com.trg.search.IMutableSearch;
+//import com.trg.search.Search;
+//import com.trg.search.SearchResult;
+//import com.trg.search.hibernate.HibernateSearchProcessor;
 
 /**
  * This class serves as the Base class for all other DAOs - namely to hold

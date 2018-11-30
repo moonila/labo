@@ -34,8 +34,8 @@ public class UserManagerImplTest extends GenericUnitCase{
 		user2.setPassword("toto");
 		user2.setName("titi");
 
-		userDao.saveOrUpdate(user1);
-		userDao.saveOrUpdate(user2);
+		userDao.save(user1);
+		userDao.save(user2);
 	}
 	
 	@Test

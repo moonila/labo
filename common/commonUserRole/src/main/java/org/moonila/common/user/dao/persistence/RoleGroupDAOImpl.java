@@ -21,25 +21,23 @@
 
 package org.moonila.common.user.dao.persistence;
 
-import org.moonila.common.dao.persistence.GenericHibernateDAOImpl;
-import org.moonila.common.user.dao.bo.BaseRoleGroupBO;
 import org.springframework.stereotype.Repository;
 
 /**
  * @author strino
  * 
  */
-@Repository("roleGroupDao")
-public class RoleGroupDAOImpl extends
-		GenericHibernateDAOImpl<BaseRoleGroupBO, String> implements RoleGroupDAO {
+//@Repository("roleGroupDao")
+public class RoleGroupDAOImpl {
+//		extends GenericHibernateDAOImpl<BaseRoleGroupBO, String> implements RoleGroupDAO {
 
-	// retrieve role group by its name
-	public BaseRoleGroupBO getRoleGroupByName(String name) {
-		return getByPropertyUnique("name", name);
-	}
-
-	public void setType() {
-		super.setType(BaseRoleGroupBO.class);
-
-	}
+//	// retrieve role group by its name
+//	public BaseRoleGroupBO getRoleGroupByName(String name) {
+//		return getByPropertyUnique("name", name);
+//	}
+//
+//	public void setType() {
+//		super.setType(BaseRoleGroupBO.class);
+//
+//	}
 }
