@@ -9,3 +9,5 @@
 /generic*/target
 /generic*/.settings
 /generic*/.project
+*iml
+/.idea
